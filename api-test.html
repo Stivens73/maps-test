@@ -3,9 +3,27 @@
 <html>
   <head>
     <style>
-    #map {
-      height: 100%;
-    }
+    #map { 
+  height: 100%; 
+  width: 100%; 
+  position:absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+}
+
+ #overlay { 
+  position: relative; 
+  z-index: 1; 
+  width: 90%;
+  margin: 60px auto 0;
+  padding: 10px;
+  background: black;
+  height: 85%;
+  opacity: .45; 
+  color: white;)
+}
     html, body {
       height: 100%;
       margin: 0;
@@ -23,7 +41,11 @@
     </style>
   </head>
   <body>
+  <div id="overlay">
+    <p>Here you can put things</p>
+  </div>
     <div id="map"></div>
+
     <script>
     var map, infoWindow;
       function initMap() {
@@ -47,10 +69,15 @@
             map.setCenter(pos);
             //map.setScrollWheel(false);
             map.setZoom(16);
+            //var GeoMarker = new GeolocationMarker();
+            //GeoMarker.setMap(map);
+            //GeoMarker.setCircleOptions({fillColor: '#808080'});
+            //GeoMarker.setMap(map);
             var GeoMarker = new google.maps.Marker({
               position: pos,
               map: map,
               icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+              //fillColor: #808080
             });
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -70,19 +97,9 @@
           scrollwheel: false
         });
         map.setMapTypeId("hybrid");
-        /*
-        pos = {lat: -34.997, lng: 150.644};
-        infoWindow.setPosition(pos);
-        /*infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        
-        map.setCenter(pos);
-        infoWindow.open(map);
-        */
       }
       
-
+    google.maps.event.addDomListener(window, 'load', initMap);
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA59ba5W49FiRLWGazSr4D4cEg0lrw5e8&callback=initMap"
     async defer>
