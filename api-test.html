@@ -47,6 +47,11 @@
             map.setCenter(pos);
             //map.setScrollWheel(false);
             map.setZoom(16);
+            var GeoMarker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+            });
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
