@@ -53,6 +53,7 @@
 </head>
 <body>
 <div id="overlay">
+    <button onclick="initMap()">Center</button>
     <div class="typeform-widget" data-url="https://mishabehey.typeform.com/to/tFCzlW"></div>
 </div>
 <div id="map"></div>
@@ -99,6 +100,7 @@
         }
     }
 
+  
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
         map = new google.maps.Map(document.getElementById('map'), {
