@@ -64,7 +64,11 @@
         // Create a map object and specify the DOM element for display.
         map = new google.maps.Map(document.getElementById('map'), {
             scrollwheel: false,
-            disableDefaultUI: true
+            center: {lat: 37.775, lng: -122.419},
+            zoom: 8,
+            //disableDefaultUI: true,
+            disableDefaultUI: true,
+            disableDoubleClickZoom: true
         });
         map.setMapTypeId('hybrid');
         infoWindow = new google.maps.InfoWindow;
@@ -107,7 +111,8 @@
             center: {lat: 37.775, lng: -122.419},
             zoom: 8,
             disableDefaultUI: true,
-            scrollwheel: false
+            scrollwheel: false,
+            disableDoubleClickZoom: true
         });
         map.setMapTypeId("hybrid");
     }
