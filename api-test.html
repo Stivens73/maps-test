@@ -16,11 +16,15 @@
             position: relative;
             z-index: 1;
             width: 90%;
+            /*margin-left: : 20px auto 0;
+            margin-right: 20px auto 0;
+            margin-top: 20px auto 0;
+            margin-bottom: 20 px auto 0;*/
             margin: 60px auto 0;
             background: black;
             height: 85%;
             opacity: .85;
-            color: white;
+            color: blue;
         )
         }
 
@@ -50,15 +54,7 @@
 
         }
     </style>
-</head>
-<body>
-<div id="overlay">
-    <button onclick="initMap()">Center</button>
-    <div class="typeform-widget" data-url="https://mishabehey.typeform.com/to/tFCzlW"></div>
-</div>
-<div id="map"></div>
-
-<script>
+    <script>
     var map, infoWindow;
     function initMap() {
         // Create a map object and specify the DOM element for display.
@@ -117,12 +113,33 @@
         map.setMapTypeId("hybrid");
     }
 
+    function basicMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 37.775, lng: -122.419},
+            zoom: 8,
+            disableDefaultUI: true,
+            scrollwheel: false,
+            disableDoubleClickZoom: true
+        });
+        map.setMapTypeId("hybrid"); 
+    }
+
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA59ba5W49FiRLWGazSr4D4cEg0lrw5e8&callback=initMap"
+<script src="http://maps.google.com/maps/api/js?sensor=false&v=3.5&callback=basicMap"
         async defer>
 
 </script>
+</head>
+
+<body>
+<div id="overlay">
+    <button onclick="initMap()">Can we use your location please?</button>
+    <div class="typeform-widget" data-url="https://mishabehey.typeform.com/to/tFCzlW"></div>
+</div>
+<div id="map"></div>
+
+
 <!-- typeform stuff -->
 <script>(function () {
     var qs, js, q, s, d = document, gi = d.getElementById, ce = d.createElement, gt = d.getElementsByTagName,
